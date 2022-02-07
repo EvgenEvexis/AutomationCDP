@@ -14,7 +14,7 @@ public class DriverFactory {
   private static DriverNames driverName;
   private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
-  public static void initDriver(String testName) throws Exception {
+  public static void initDriver() throws Exception {
     driverName = DriverNames.valueOf(SystemProperties.DRIVER.toUpperCase());
     VegaLogger.info("Create driver " + driverName);
     switch (driverName) {

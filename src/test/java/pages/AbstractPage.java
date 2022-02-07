@@ -24,7 +24,7 @@ public class AbstractPage<T extends AbstractPage> {
   @FindBy(xpath = "//a[contains(.,'%s')]")
   private CustomWebElement linkWithText;
 
-  public static final String SITE_URL_ENG = String.format("https://%s", SystemProperties.BASE_URL_ENG);
+  public static final String SITE_URL_ENG = String.format("https://%s", SystemProperties.BASE_URL_ST);
   protected static final ThreadLocal<WebDriverWait> WAIT = new ThreadLocal<>();
 
   public WebDriver driver;

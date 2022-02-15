@@ -37,7 +37,4 @@ public class DriverFactory {
     return DRIVER.get();
   }
 
-  public static DriverNames driverName() {
-    return driverName;
-  }
 }

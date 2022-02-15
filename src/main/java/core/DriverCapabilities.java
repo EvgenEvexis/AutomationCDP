@@ -19,7 +19,7 @@ public class DriverCapabilities {
       case CHROME -> {
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("intl.accept_languages", "eu-EU");
+        prefs.put("intl.accept_languages", "de-DE");
         options.setExperimentalOption("prefs", prefs);
         capabilities = options;
       }

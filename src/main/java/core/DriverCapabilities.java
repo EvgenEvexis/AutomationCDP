@@ -16,27 +16,18 @@ public class DriverCapabilities {
 
   public DriverCapabilities(BrowserNames browser) {
     switch (browser) {
-      case CHROME:
+      case CHROME -> {
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("intl.accept_languages", "eu-EU");
         options.setExperimentalOption("prefs", prefs);
         capabilities = options;
-        break;
-      case FIREFOX:
-        capabilities = new FirefoxOptions();
-        break;
-      case EDGE:
-        capabilities = new EdgeOptions();
-        break;
-      case SAFARI:
-        capabilities = new SafariOptions();
-        break;
-      case IE11:
-        capabilities = new InternetExplorerOptions();
-        break;
-      default:
-        break;
+      }
+      case FIREFOX -> capabilities = new FirefoxOptions();
+      case EDGE -> capabilities = new EdgeOptions();
+      case SAFARI-> capabilities = new SafariOptions();
+      case IE11-> capabilities = new InternetExplorerOptions();
+      default -> {}
     }
   }
 

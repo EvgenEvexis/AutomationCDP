@@ -22,12 +22,10 @@ public class SmokeUserFlow extends BaseUITest {
     String searchText = MainPageSteps.getRandomString(6);
     BaseSteps.navigateToMainPage();
     MainPageSteps.enterSearchQuerry(searchText);
-    BaseSteps.clickBlankArea();
     MainPageSteps.validateStartMenuIsVisible();
     MainPageSteps.validateSearchInputIsVisible();
-    BaseSteps.refreshPage();
-    BaseSteps.validateTextIsPresented(searchText);
     MainPageSteps.searchInputTextIsCorrect(searchText);
+    BaseSteps.refreshPage();
   }
 
 }

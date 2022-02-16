@@ -24,7 +24,6 @@ public class AbstractPage<T extends AbstractPage> {
   @FindBy(xpath = "//a[contains(.,'%s')]")
   private CustomWebElement linkWithText;
 
-  public static final String SITE_URL_ENG = String.format("https://%s", SystemProperties.BASE_URL_ST);
   protected static final ThreadLocal<WebDriverWait> WAIT = new ThreadLocal<>();
 
   public WebDriver driver;
@@ -52,16 +51,6 @@ public class AbstractPage<T extends AbstractPage> {
       Thread.sleep(millis);
     } catch (InterruptedException e) {
       //Ignore it
-    }
-  }
-
-  protected void waitForList(By by) {
-    try {
-      getWait().withTimeout(Duration.ofSeconds(20))
-          .until(ExpectedConditions.numberOfElementsToBeMoreThan(by, 0));
-    } catch (TimeoutException e) {
-      VegaLogger.error(e);
-      Assert.fail("The list loading timed out.");
     }
   }
 
@@ -103,13 +92,6 @@ public class AbstractPage<T extends AbstractPage> {
 
   protected void waitAndClick(CustomWebElement button) {
     waitAndClick(button, 5);
-  }
-
-  public void switchToNewWindow() {
-    getWait().until(ExpectedConditions.numberOfWindowsToBe(2));
-    for (String winHandle : driver.getWindowHandles()) {
-      driver.switchTo().window(winHandle);
-    }
   }
 
   private static class TextCondition implements ExpectedCondition {

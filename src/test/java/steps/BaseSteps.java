@@ -3,7 +3,6 @@ package steps;
 import core.DriverFactory;
 import core.web.CustomWebElement;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.youtube.MainPage;
@@ -40,7 +39,7 @@ public class BaseSteps {
     driver().navigate().refresh();
   }
 
-  protected static void validateTextIsPresented(String elementsText) {
+  public static void validateTextIsPresented(String elementsText) {
     Assert.assertTrue(
         new CustomWebElement(driver(), elementsText,
             String.format("//*[contains(text(),'%s')]", elementsText))

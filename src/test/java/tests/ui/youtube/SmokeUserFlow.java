@@ -25,6 +25,8 @@ public class SmokeUserFlow extends BaseUITest {
     MainPageSteps.validateStartMenuIsVisible();
     MainPageSteps.validateSearchInputIsVisible();
     MainPageSteps.searchInputTextIsCorrect(searchText);
+    BaseSteps.refreshPage();
+    BaseSteps.clickBlankArea();
   }
 
 }

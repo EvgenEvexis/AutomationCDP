@@ -18,17 +18,16 @@ public class DriverFactory {
     driverName = DriverNames.valueOf(SystemProperties.DRIVER.toUpperCase());
     VegaLogger.info("Create driver " + driverName);
     switch (driverName) {
-      case CHROME:
+      case CHROME -> {
         WebDriverManager.chromedriver().driverVersion(SystemProperties.BROWSER_VERSION).setup();
         DRIVER.set(new ChromeDriver((ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities()));
-        break;
-      case FIREFOX:
+      }
+      case FIREFOX -> {
         WebDriverManager.firefoxdriver().setup();
         DRIVER
             .set(new FirefoxDriver((FirefoxOptions) (new DriverCapabilities(BrowserNames.FIREFOX)).getCapabilities()));
-        break;
-      default:
-        throw new Exception("No such driver in DriverFactory");
+      }
+      default -> throw new Exception("No such driver in DriverFactory");
     }
     DRIVER.get();
   }
@@ -37,7 +36,4 @@ public class DriverFactory {
     return DRIVER.get();
   }
 
-  public static DriverNames driverName() {
-    return driverName;
-  }
 }

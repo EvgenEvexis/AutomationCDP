@@ -27,13 +27,8 @@ public class MainPage extends AbstractPage {
   @FindBy(css = "body")
   private CustomWebElement blankArea;
 
-  private boolean isCookiesAccepted = false;
-
   public MainPage(WebDriver driver) {
     init(driver);
-  }
-
-  public MainPage() {
   }
 
   public void navigateTo() {
@@ -41,17 +36,18 @@ public class MainPage extends AbstractPage {
   }
 
   public boolean startMenuIsDisplayed() {
-    getWait().until(ExpectedConditions.visibilityOf(startMenu));
+    waitForVisibilityOfElement(startMenu);
     return startMenu.isDisplayed();
   }
 
   public boolean searchInputIsDisplayed() {
-    getWait().until(ExpectedConditions.visibilityOf(searchInputField));
+    waitForVisibilityOfElement(searchInputField);
     return searchInputField.isDisplayed();
   }
 
   public void enterSearchQuery(String text) {
     VegaLogger.info("Search querry is: " +text);
+    waitAndClick(searchInputField);
     searchInputField.sendKeys(text);
   }
 

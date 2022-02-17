@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import steps.BaseSteps;
 import steps.pagesteps.MainPageSteps;
 import tests.ui.BaseUITest;
+import utils.testrail.client.TestRailClient;
 
 @Test(groups = {"sanity", "ui",})
 public class SmokeUserFlow extends BaseUITest {
@@ -15,9 +16,11 @@ public class SmokeUserFlow extends BaseUITest {
   @Override
   public void setUp(Method method) throws Exception {
     super.setUp(method);
+    TestRailClient.setProjectSuiteId("EvexisAutomationCDP", "youtube suite");
+    TestRailClient.createRun();
   }
 
-  @Test(description = "C00001")
+  @Test(description = "T1")
   public void searchForAnything() {
     String searchText = MainPageSteps.getRandomString(6);
     BaseSteps.navigateToMainPage();
@@ -26,7 +29,6 @@ public class SmokeUserFlow extends BaseUITest {
     MainPageSteps.validateSearchInputIsVisible();
     MainPageSteps.searchInputTextIsCorrect(searchText);
     BaseSteps.refreshPage();
-    BaseSteps.clickBlankArea();
   }
 
 }
